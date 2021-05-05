@@ -1,0 +1,31 @@
+{
+  "name": "mvc-tech_blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-session-sequelize": "^7.1.1",
+    "dotenv": "^8.6.0",
+    "express-session": "^1.17.1",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmcunningham27/MVC-Tech_Blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cmcunningham27/MVC-Tech_Blog/issues"
+  },
+  "homepage": "https://github.com/cmcunningham27/MVC-Tech_Blog#readme"
+}
