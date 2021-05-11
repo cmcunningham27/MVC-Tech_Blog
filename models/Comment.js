@@ -12,18 +12,19 @@ Comment.init(
             allowNull: false,
         },
         content: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(500),
             allowNull: false,
         },
-        user_name: {
-            type: DataTypes.STRING,
+        user_id: {
+            type: DataTypes.INTEGER,
             references: {
                 model: 'user',
-                key: 'name'
+                key: 'id'
             },
         },
         date: {
             type: DataTypes.DATEONLY,
+            defaultValue: DataTypes.NOW,
             allowNull: false,
         }
     },

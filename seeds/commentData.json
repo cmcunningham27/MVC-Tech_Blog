@@ -1,11 +1,14 @@
 [
     {
-        "content": "I really enjoyed reading your blog!"
+        "content": "I really enjoyed reading your blog!",
+        "user_id": "1"
     },
     {
-        "content": "I would love to hear more about this sometime."
+        "content": "I would love to hear more about this sometime.",
+        "user_id": "2"
     },
     {
-        "content": "I can't believe you just said that! I am outraged!"
+        "content": "I can't believe you just said that! I am outraged!",
+        "user_id": "3"
     }
 ]
