@@ -1,0 +1,15 @@
+<div class="d-flex flex-column p-5">
+    {{#each blogs as |blog|}}
+    <div class="oldBlog ms-2 me-2">
+        <div class="bg-success d-flex flex-row p-2">
+            <h4 class="text-light">{{blog.title}}</h4>
+            <h6 class="text-light ms-auto">Posted by {{blog.user_name}} on {{blog.date}}</h6>
+        </div>
+        <div class="p-3">
+            <p>
+                {{blog.content}}
+            </p>
+        </div>
+    </div>
+    {{/each}}
+</div>
