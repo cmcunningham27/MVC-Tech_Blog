@@ -1,15 +1,17 @@
-<div class="d-flex flex-column p-5">
-    {{#each blogs as |blog|}}
-    <div class="oldBlog ms-2 me-2">
+<div class="eachBlog flex-column p-3">
+    {{#each user as |user|}}
+    {{#each user.blogs as |blog|}}
+    <div class="oldBlog ms-3 me-3 mb-4 border border-dark">
         <div class="bg-success d-flex flex-row p-2">
             <h4 class="text-light">{{blog.title}}</h4>
-            <h6 class="text-light ms-auto">Posted by {{blog.user_name}} on {{blog.date}}</h6>
+            <h6 class="text-light ms-auto">Posted by {{user.name}} on {{blog.date}}</h6>
         </div>
         <div class="p-3">
             <p>
-                {{blog.content}}
+                {{blog.contents}}
             </p>
         </div>
     </div>
+    {{/each}}
     {{/each}}
 </div>

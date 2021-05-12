@@ -13,15 +13,17 @@
 <body>
     <div class="top h-100 text-light">
         <div class="nav d-flex flex-row bg-success p-2 ps-3 pe-3">
-            <a class="bucket p-1 rounded text-light m-3" href="/">Homepage</a>
-            <a id="logout" class="logout text-light m-3" href="/dashboard">Dashboard</a>
+            <a class="bucket text-light m-3" href="/">Homepage</a>
             {{#if logged_in}}
+            <a id="dashboard" class="text-light m-3" href="/dashboard">Dashboard</a>
             <a id="logout" class="text-light m-3" href="/">Log Out</a>
-            {{#else}}
-            <a id="login" class="text-light m-3" href="#">Login</a>
+            {{else}}
+            <a id="notDashboard" class="text-light m-3" href="/login">Dashboard</a>
+            <a id="login" class="text-light m-3" href="/login">Login</a>
             {{/if}}
         </div>
-        <h1 class="rounded p-3 shadow bg-light text-dark">The Tech Blog</h1>
+        <div class="d-flex flex-row bg-success"><h1 class="rounded me-auto m-3 mt-0 p-2 shadow bg-light text-dark">The Tech Blog</h1></div>
+        
     </div>
     <main class="main vh-100">
         {{{body}}}
