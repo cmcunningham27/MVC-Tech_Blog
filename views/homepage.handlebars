@@ -1,5 +1,5 @@
 <div class="blogList">
-    {{#each user as |user|}}
+    {{#each users as |user|}}
     {{#each user.blogs as |blog|}}
     <div class="blog m-4 border border-dark border-4">
         <div class="bg-success d-flex flex-row p-2">
@@ -36,13 +36,15 @@
                 </h4>
             </div>
             <div class="p-3">
-                <textarea>
+                <textarea class="w-100">
                     
                 </textarea>
-            </div>
-            <button class="commentBtn">
+                <br><br>
+                <button class="commentBtn w-100 rounded">
                 SUBMIT
-            </button>
+                </button>
+            </div>
+            
         </div>
     </div>
 </div>

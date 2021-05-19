@@ -22,6 +22,13 @@ Comment.init(
                 key: 'id'
             },
         },
+        blog_id: {
+            type: DataTypes.INTEGER,
+            reference: {
+                model: 'blog',
+                key: 'id',
+            },
+        },
         date: {
             type: DataTypes.DATEONLY,
             defaultValue: DataTypes.NOW,

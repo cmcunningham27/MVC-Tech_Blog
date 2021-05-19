@@ -12,9 +12,9 @@ router.get('/', async (req, res) => {
             res.status(404).json({ message: 'There are no blogs' });
         }
         console.log(req.session.logged_in);
-        const user = userData.map((user) => user.get({ plain: true }));
+        const users = userData.map((user) => user.get({ plain: true }));
         res.render('homepage', {
-            user,
+            users,
             logged_in: req.session.logged_in
         });
     }catch (err) {

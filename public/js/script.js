@@ -24,14 +24,22 @@ const singleBlogFn = (id, title, contents, user, date) => {
 }
 
 document.querySelector('#logout').addEventListener('click', logoutFn);
+const blogs = document.getElementsByClassName('eachBlogTitle');
+console.log(blogs);
 
-document.querySelector('.eachBlogTitle').addEventListener('click', (event) => {
-    const target = event.target;
-    const id = target.id;
-    const title = target.dataset.title;
-    const contents = target.dataset.contents;
-    const user = target.dataset.user;
-    const date = target.dataset.date;
-    console.log(target, title, id, contents);
-    singleBlogFn(id, title, contents, user, date); 
-});
+for (let i = 0; i < blogs.length; i++) {
+    blogs[i].addEventListener('click', (event) => {
+        const target = event.target;
+        const id = target.id;
+        const title = target.dataset.title;
+        const contents = target.dataset.contents;
+        const user = target.dataset.user;
+        const date = target.dataset.date;
+        console.log(target, title, id, contents);
+        singleBlogFn(id, title, contents, user, date); 
+    })
+}
+
+// blogs.forEach((blog) => {
+    
+// });
