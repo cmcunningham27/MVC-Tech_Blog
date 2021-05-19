@@ -1,11 +1,48 @@
-<div class="eachBlog flex-column p-3">
+<div class="blogList">
     {{#each user as |user|}}
-    {{#each (limitBlogs user.blogs 3) as |blog|}}
-    
-        {{> existing_blogs blog=blog}}
-
+    {{#each user.blogs as |blog|}}
+    <div class=" m-4 border border-dark border-4" data-id={{blog.id}} data-title={{blog.title}} data-contents={{blog.contents}} data-user={{user.name}} data-date={{format_date blog.date}}>
+        <div class="oldBlog bg-success d-flex flex-row p-2">
+            <h4 class="text-light">{{blog.title}}</h4>
+            <h6 class="post text-light ms-auto">Posted by {{user.name}} on {{ format_date blog.date }}</h6>
+        </div>
+        <div class="p-3">
+            <p>
+                {{blog.contents}}
+            </p>
+        </div>
+    </div>
     {{/each}}
     {{/each}}
 </div>
+<div class="oneBlog flex-column">
+    <div class="m-4 border border-dark border-4">
+        <div class="bg-success d-flex flex-row p-2">
+            <h4 class="title text-light"></h4>
+            <h6 class="text text-light ms-auto"></h6>
+        </div>
+        <div class="p-3">
+            <p>
+                    
+            </p>
+        </div>
+    </div>
 
- {{!-- <script src="/js/script.js"></script> --}}
+    <div class="commentBox d-flex flex-column p-3">
+        <div class="m-1 border border-dark border-4">
+            <div class="bg-success d-flex flex-row p-2">
+                <h4 class="text-light">
+                    Comment
+                </h4>
+            </div>
+            <div class="p-3">
+                <textarea>
+                    
+                </textarea>
+            </div>
+            <button>
+                SUBMIT
+            </button>
+        </div>
+    </div>
+</div>

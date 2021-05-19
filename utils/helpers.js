@@ -10,7 +10,9 @@ module.exports = {
 
         for (let i = 0; i < max && i < arr.length; i++) {
             blog.push(arr[i]);
+            console.log(i);
         }
+        console.log(blog);
         return blog;
     },
 };   
