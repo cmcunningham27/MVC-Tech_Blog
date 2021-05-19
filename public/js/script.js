@@ -57,7 +57,7 @@ for (let i = 0; i < blogs.length; i++) {
 
 document.querySelector('.commentBtn').addEventListener('click', (event) => {
     const target = event.target;
-    const blog_id = target.blog_id;
-    const content = document.querySelector('.commentText').value;
+    const blog_id = target.dataset.blog_id;
+    const content = document.querySelector('.commentText').value.trim();
     createComment(blog_id, content);
 })
