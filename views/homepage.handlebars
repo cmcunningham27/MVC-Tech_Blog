@@ -3,7 +3,7 @@
     {{#each user.blogs as |blog|}}
     <div class="blog m-4 border border-dark border-4">
         <div class="bg-success d-flex flex-row p-2">
-            <h4 class="eachBlogTitle text-light" data-id={{blog.id}} data-title="{{blog.title}}" data-contents="{{blog.contents}}" data-user="{{user.name}}" data-date="{{ format_date blog.date}}">{{blog.title}}</h4>
+            <h4 class="eachBlogTitle text-light" data-id="{{blog.id}}" data-title="{{blog.title}}" data-contents="{{blog.contents}}" data-user="{{user.name}}" data-date="{{ format_date blog.date}}">{{blog.title}}</h4>
             <h6 class="post text-light ms-auto">Posted by {{user.name}} on {{ format_date blog.date }}</h6>
         </div>
         <div class="p-3">
@@ -36,7 +36,7 @@
                 </h4>
             </div>
             <div class="p-3">
-                <textarea class="w-100">
+                <textarea class="commentText w-100">
                     
                 </textarea>
                 <br><br>
