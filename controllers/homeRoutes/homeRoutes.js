@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Blog, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const userData = await User.findAll({
             include: [{ model: Blog, attributes: ['title', 'contents', 'date']}]
@@ -11,7 +11,7 @@ router.get('/', withAuth, async (req, res) => {
         if (!userData) {
             res.status(404).json({ message: 'There are no blogs' });
         }
-
+        console.log(req.session.logged_in);
         const user = userData.map((user) => user.get({ plain: true }));
         res.render('homepage', {
             user,

@@ -26,7 +26,7 @@ router.post('/login', async (req, res) => {
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
-            res.redirect('/homepage');
+            res.redirect('/');
         });
 
     } catch (err) {
@@ -52,6 +52,7 @@ router.post('/signup', async (req, res) => {
 });
 
 router.post('/logout', withAuth, (req, res) => {
+    console.log('Logging out');
     if(req.session.logged_in){
         req.session.destroy(() => {
             res.status(204).end();
