@@ -14,25 +14,24 @@ const logoutFn = async () => {
     }
 };
 
-const singleBlogFn = (id, title, contents, text) => {
+const singleBlogFn = (id, title, contents, user, date) => {
     document.querySelector('.oneBlog').style.display = 'flex';
     document.querySelector('.blogList').style.display = 'none';
 
     document.querySelector('.title').innerHTML = title;
-    document.querySelector('.text').innerHTML = text;
+    document.querySelector('.text').innerHTML = `Posted by ${ user } on ${ date }`;
+    document.querySelector('.oneBlogP').innerHTML = contents;
 }
 
 document.querySelector('#logout').addEventListener('click', logoutFn);
 
-document.querySelector('.blogList').addEventListener('click', (event) => {
+document.querySelector('.eachBlogTitle').addEventListener('click', (event) => {
     const target = event.target;
     const id = target.id;
     const title = target.dataset.title;
     const contents = target.dataset.contents;
+    const user = target.dataset.user;
+    const date = target.dataset.date;
     console.log(target, title, id, contents);
-
-    if (target.matches('.oldBlog')) {
-        const text = document.querySelector('.post').innerHTML;
-        singleBlogFn(id, title, contents, text);
-    }
+    singleBlogFn(id, title, contents, user, date); 
 });
