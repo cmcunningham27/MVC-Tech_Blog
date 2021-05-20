@@ -1,6 +1,6 @@
-<div class="blogList">
-    {{#each users as |user|}}
-    {{#each user.blogs as |blog|}}
+<div class="blogList p-2">
+    {{!-- {{#each users as |user|}} --}}
+    {{#each blogs as |blog|}}
     <div class="blog m-4 border border-dark border-4">
         <div class="bg-success d-flex flex-row p-2">
             <h4 class="eachBlogTitle text-light" data-id="{{blog.id}}" data-title="{{blog.title}}" data-contents="{{blog.contents}}" data-user="{{user.name}}" data-date="{{ format_date blog.date}}">{{blog.title}}</h4>
@@ -13,7 +13,7 @@
         </div>
     </div>
     {{/each}}
-    {{/each}}
+    {{!-- {{/each}} --}}
 </div>
 <div class="oneBlog flex-column">
     <div class="m-4 border border-dark border-4">
@@ -54,9 +54,11 @@
             <p class="commentContent p-3">
 
             </p>
+            {{#if logged_in}}
             <p>
                 -- {{user.name}} 
             </p>
+            {{/if}}
         </div>
     </div>
 </div>

@@ -15,17 +15,27 @@ const logoutFn = async () => {
         alert(response.statusText);
     }
 };
+const singleBlogFn = async (id) => {
+    // document.querySelector('.oneBlog').style.display = 'flex';
+    // document.querySelector('.blogList').style.display = 'none';
 
-const singleBlogFn = (blog_id, title, contents, user, date) => {
-    document.querySelector('.oneBlog').style.display = 'flex';
-    document.querySelector('.blogList').style.display = 'none';
+    // console.log(blog_id);
+    // document.querySelector('.title').innerHTML = title;
+    // document.querySelector('.text').innerHTML = `Posted by ${ user } on ${ date }`;
+    // document.querySelector('.oneBlogP').innerHTML = contents;
+    // document.querySelector('.commentBtn').setAttribute('data-blog_id', blog_id);
+    const response = await fetch(`/blog/${ id }`, {
+        method: 'GET',
+        // headers: { 'Content-Type': 'application/json'}
+    });
 
-    console.log(blog_id);
-    document.querySelector('.title').innerHTML = title;
-    document.querySelector('.text').innerHTML = `Posted by ${ user } on ${ date }`;
-    document.querySelector('.oneBlogP').innerHTML = contents;
-    document.querySelector('.commentBtn').setAttribute('data-blog_id', blog_id);
-}
+    if (response.ok) {
+        document.location.replace('blog');
+    } else {
+        alert(response.statusText);
+    }
+};
+
 
 // const renderComment = async (blog_id, content) => {
 //     const response = await fetch('/api/comment', {
@@ -61,12 +71,15 @@ for (let i = 0; i < blogs.length; i++) {
     blogs[i].addEventListener('click', (event) => {
         const target = event.target;
         const blog_id = target.dataset.id;
-        const title = target.dataset.title;
-        const contents = target.dataset.contents;
-        const user = target.dataset.user;
-        const date = target.dataset.date;
-        console.log(target, title, blog_id, contents);
-        singleBlogFn(blog_id, title, contents, user, date); 
+        // const title = target.dataset.title;
+        // const contents = target.dataset.contents;
+        // const user = target.dataset.user;
+        // const date = target.dataset.date;
+        // console.log(target, title, blog_id, contents);
+        singleBlogFn(blog_id); 
+        // const response = async (blog_id) => {
+
+        // }
     });
 };
 

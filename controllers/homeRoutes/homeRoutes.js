@@ -1,23 +1,49 @@
 const router = require('express').Router();
-const { Blog, User } = require('../../models');
+const { Blog, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/', async (req, res) => {
     try {
-        const userData = await User.findAll({
-            include: [{ model: Blog, attributes: ['id', 'title', 'contents', 'date']}]
+        const blogData = await Blog.findAll({
+            include: [{ model: User, attributes: ['name']}, { model: Comment, include: [User] }]
         });
 
-        if (!userData) {
+        // const userData = await User.findAll({
+        //     include: [{ model: Blog, attributes: ['id', 'title', 'contents', 'date']}, { model: Comment, include: [User] }]
+        // });
+
+        if (!blogData) {
             res.status(404).json({ message: 'There are no blogs' });
         }
         console.log(req.session.logged_in);
-        const users = userData.map((user) => user.get({ plain: true }));
+        const blogs = blogData.map((blog) => blog.get({ plain: true }));
         res.render('homepage', {
-            users,
-            // logged_in: req.session.logged_in
+            blogs,
+            logged_in: req.session.logged_in
         });
     }catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
+
+router.get('/blog/:id', withAuth, async (req, res) => {
+    try {
+        const blogData = await Blog.findByPk(req.params.id, {
+            include: [{ model: Comment, include: [User] }, { model: User, attributes: ['name'] }]
+        });
+
+        if (!blogData) {
+            res.status(400).json({ message: 'Blog not found!'});
+        }
+
+        const blog = blogData.get({ plain: true });
+        console.log(blog);
+        res.render('blog', {
+            blog,
+            logged_in: req.session.logged_in
+        });
+    } catch(err) {
         console.log(err);
         res.status(500).json(err);
     }
