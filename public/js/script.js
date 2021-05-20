@@ -1,4 +1,6 @@
 document.querySelector('.oneBlog').style.display = 'none';
+document.querySelector('.commentBox').style.display = 'flex';
+document.querySelector('.postedComment').style.display = 'none';
 
 const logoutFn = async () => {
     console.log('See me');
@@ -25,14 +27,27 @@ const singleBlogFn = (blog_id, title, contents, user, date) => {
     document.querySelector('.commentBtn').setAttribute('data-blog_id', blog_id);
 }
 
+// const renderComment = async (blog_id, content) => {
+//     const response = await fetch('/api/comment', {
+//         method: 'GET',
+//         body: JSON.stringify({ blog_id, content }),
+//         headers: { 'Content-Type': 'application/json' },
+//     });
+//     console.log(response);
+//     if (response.ok) {
+
+//     }
+// }
+
 const createComment = async (blog_id, content) => {
-    const response = await fetch('api/comment', {
+
+    const response = await fetch('/api/comment', {
         method: 'POST',
         body: JSON.stringify({ blog_id, content }),
         headers: { 'Content-Type': 'application/json'},
     });
     if (response.ok) {
-        response.statusText;
+        // renderComment(blog_id, content);
     } else {
         alert(response.statusText);
     }
@@ -52,12 +67,15 @@ for (let i = 0; i < blogs.length; i++) {
         const date = target.dataset.date;
         console.log(target, title, blog_id, contents);
         singleBlogFn(blog_id, title, contents, user, date); 
-    })
-}
+    });
+};
 
 document.querySelector('.commentBtn').addEventListener('click', (event) => {
     const target = event.target;
     const blog_id = target.dataset.blog_id;
     const content = document.querySelector('.commentText').value.trim();
+    document.querySelector('.commentBox').style.display = 'none';
+    document.querySelector('.postedComment').style.display = 'flex';
+    document.querySelector('.commentContent').innerHTML = content;
     createComment(blog_id, content);
-})
+});
