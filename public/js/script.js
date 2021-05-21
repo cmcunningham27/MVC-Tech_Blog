@@ -1,6 +1,6 @@
-document.querySelector('.oneBlog').style.display = 'none';
-document.querySelector('.commentBox').style.display = 'flex';
-document.querySelector('.postedComment').style.display = 'none';
+// document.querySelector('.oneBlog').style.display = 'none';
+// document.querySelector('.commentBox').style.display = 'flex';
+// document.querySelector('.postedComment').style.display = 'none';
 
 const logoutFn = async () => {
 
@@ -18,33 +18,34 @@ const logoutFn = async () => {
 
 };
 const singleBlogFn = async (id) => {
+    console.log('id', id);
     const response = await fetch(`/blog/${ id }`, {
         method: 'GET',
         // headers: { 'Content-Type': 'application/json'}
     });
 
     if (response.ok) {
-        // document.location.replace(`/blog/${ id }`);
-        // console.log(response.statusText);
+        document.location.replace(`/blog/${ id }`);
+        // console.log("It's working!");
     } else {
         alert(response.statusText);
     }
 };
 
-const createComment = async (blog_id, content) => {
+// const createComment = async (blog_id, content) => {
 
-    const response = await fetch('/api/comment', {
-        method: 'POST',
-        body: JSON.stringify({ blog_id, content }),
-        headers: { 'Content-Type': 'application/json'},
-    });
+//     const response = await fetch('/api/comment', {
+//         method: 'POST',
+//         body: JSON.stringify({ blog_id, content }),
+//         headers: { 'Content-Type': 'application/json'},
+//     });
 
-    if (response.ok) {
-        // renderComment(blog_id, content);
-    } else {
-        alert(response.statusText);
-    }
-};
+//     if (response.ok) {
+//         // renderComment(blog_id, content);
+//     } else {
+//         alert(response.statusText);
+//     }
+// };
 
 document.querySelector('#logout').addEventListener('click', logoutFn);
 
@@ -58,14 +59,14 @@ for (let i = 0; i < blogs.length; i++) {
     });
 };
 
-document.querySelector('.commentBtn').addEventListener('click', (event) => {
+// document.querySelector('.commentBtn').addEventListener('click', (event) => {
 
-    const target = event.target;
-    const blog_id = target.dataset.blog_id;
-    const content = document.querySelector('.commentText').value.trim();
-    document.querySelector('.commentBox').style.display = 'none';
-    document.querySelector('.postedComment').style.display = 'flex';
-    document.querySelector('.commentContent').innerHTML = content;
-    createComment(blog_id, content);
+//     const target = event.target;
+//     const blog_id = target.dataset.blog_id;
+//     const content = document.querySelector('.commentText').value.trim();
+//     document.querySelector('.commentBox').style.display = 'none';
+//     document.querySelector('.postedComment').style.display = 'flex';
+//     document.querySelector('.commentContent').innerHTML = content;
+//     createComment(blog_id, content);
 
-});
+// });
