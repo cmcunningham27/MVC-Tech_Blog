@@ -32,7 +32,7 @@ router.get('/dashboard', async (req, res) => {
     try {
         const userData = await User.findByPk(req.session.user_id, {
             attributes: { exclude: ['password']},
-            include: [{ model: Blog, attributes: ['title', 'contents', 'date' ]}]
+            include: [{ model: Blog, attributes: ['id','title', 'contents', 'date' ]}]
         });
 
         if(!userData) {
