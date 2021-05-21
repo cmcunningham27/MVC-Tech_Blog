@@ -4,14 +4,24 @@ document.querySelector('.existingBlogBox').style.display = 'none';
 document.querySelector('.btnDiv').style.display = 'flex';
 
 const editBlogFn = (title, contents, id) => {
-    console.log('edit id', id);
     document.querySelector('.pastBlogs').style.display = 'none';
+
     document.querySelector('.existingBlogBox').style.display = 'flex';
+
     document.querySelector('.btnDiv').style.display = 'none';
+
     document.querySelector('.existingBlogTitle').setAttribute('placeholder', title);
+
     document.querySelector('.existingBlogText').innerHTML = contents;
-    document.querySelector('.updateBtn').setAttribute('data-id', id);
-    document.querySelector('.deleteBtn').setAttribute('data-id', id);
+
+    // document.querySelector('.updateBtn').addEventListener('click', (event) => {
+
+    //     updateFn();
+    // })
+
+    document.querySelector('.deleteBtn').addEventListener('click', (event) => {
+        deleteFn(id);
+    })
 };
 
 const toggleFn = () => {
@@ -67,12 +77,3 @@ if(document.querySelector('.createBtn')) {
         newBlogFn(title, contents);
     });
 };
-
-if(document.querySelector('.deleteBtn')) {
-    document.querySelector('.deleteBtn').addEventListener('click', (event) => {
-        console.log('delete button', event.target.dataset.id);
-        const id = event.target.dataset.id;
-        deleteFn(id);
-    })
-}
-
