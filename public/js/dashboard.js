@@ -14,12 +14,19 @@ const editBlogFn = (title, contents, id) => {
 
     document.querySelector('.existingBlogText').innerHTML = contents;
 
-    // document.querySelector('.updateBtn').addEventListener('click', (event) => {
+    document.querySelector('.updateBtn').addEventListener('click', () => {
+        let newTitle = '';
+        if(document.querySelector('.existingBlogTitle').value) {
+            newTitle = document.querySelector('.existingBlogTitle').value; 
+        } else {
+            newTitle = document.querySelector('.existingBlogTitle').placeholder;
+        }
+        
+        const newContents = document.querySelector('.existingBlogText').value.trim();
+        updateFn(newTitle, newContents, id);
+    })
 
-    //     updateFn();
-    // })
-
-    document.querySelector('.deleteBtn').addEventListener('click', (event) => {
+    document.querySelector('.deleteBtn').addEventListener('click', () => {
         deleteFn(id);
     })
 };
@@ -42,6 +49,21 @@ const newBlogFn = async (title, contents) => {
         alert(response.statusText);
     }
 };
+
+const updateFn = async (title, contents, id) => {
+    console.log();
+    const response = await fetch(`/api/blog/${ id }`, {
+        method: 'PUT',
+        body: JSON.stringify({ title, contents }),
+        headers: { 'Content-Type': 'application/json' }
+    });
+
+    if(response.ok) {
+        document.location.replace('/dashboard');
+    } else {
+        alert(response.statusText);
+    }
+}
 
 const deleteFn = async (id) => {
     console.log('delete id', id)
