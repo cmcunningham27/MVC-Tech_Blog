@@ -56,7 +56,7 @@ router.get('/blog/:id', withAuth, async (req, res) => {
     try {
         console.log('user id', req.session.id);
         const blogData = await Blog.findByPk(req.params.id, {
-            include: [{ model: Comment, include: [User]}]
+            include: [{ model: User, attribute: ['name']}, { model: Comment, include: [User]}, ]
         });
 // where: { user_id: req.session.user_id }
         if (!blogData) {
@@ -64,7 +64,7 @@ router.get('/blog/:id', withAuth, async (req, res) => {
         }
 
         const blog = blogData.get({ plain: true });
-        // console.log('blog I chose', blog);
+        console.log('blog I chose', blog);
         res.render('blog', {
             blog,
             logged_in: req.session.logged_in
@@ -75,20 +75,20 @@ router.get('/blog/:id', withAuth, async (req, res) => {
     }
 });
 
-// router.get('blog/comment/:id', withAuth, async (req, res) => {
+// router.get('comment/:id', withAuth, async (req, res) => {
 //     try {
 //         console.log('comment user id', req.session.id);
 //         const blogData = await Blog.findByPk(req.params.id, {
 //             include: [{ model: Comment, include: [User], where: { id: req.session.user_id}}]
 //         });
-// // where: { user_id: req.session.user_id }
+
 //         if (!blogData) {
 //             res.status(400).json({ message: 'Blog not found!'});
 //         }
 
 //         const blog = blogData.get({ plain: true });
-//         // console.log('blog I chose', blog);
-//         res.render('blog', {
+//         console.log('blog comment I chose', blog);
+//         res.render('comment', {
 //             blog,
 //             logged_in: req.session.logged_in
 //         });
