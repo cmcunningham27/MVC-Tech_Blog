@@ -31,7 +31,7 @@ router.post('/', withAuth, async (req, res) => {
         });
         
         if(!commentData) {
-            res.status(400).json({ message: 'there was a problem with your comment'})
+            res.status(400).json({ message: 'There was a problem with your comment'})
         }
 
         res.status(200).json(commentData);

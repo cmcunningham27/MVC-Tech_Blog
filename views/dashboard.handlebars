@@ -1,9 +1,10 @@
 <div class="pastBlogs flex-column p-3">
-    {{#each users.blog as |blog|}}
-    <div class="eachPastBlog border border-dark border-4 bg-success d-flex flex-row m-1 p-2 rounded">
-        <h4>
+    {{!-- {{log users.blogs 'user.blogs'}} --}}
+    {{#each users.blogs as |blog|}}
+    <div class="eachPastBlog border border-dark border-4 bg-success d-flex flex-row align-items-center m-1 p-2 rounded">
+        <h5>
             {{blog.title}}
-        </h4>
+        </h5>
         <h6 class="ms-auto">
             {{ format_date blog.date}}
         </h6>
@@ -32,7 +33,7 @@
                     
             </textarea>
             <br><br>
-            <button class="commentBtn w-100 rounded ">
+            <button class="createBtn w-100 rounded ">
                 <b>CREATE</b>
             </button>
         </div>
