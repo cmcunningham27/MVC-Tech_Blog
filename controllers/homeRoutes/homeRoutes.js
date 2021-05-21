@@ -28,9 +28,29 @@ router.get('/', async (req, res) => {
     }
 });
 
-route.get('/dashboard', async (req, res) => {
-    const blogData = await Blog.findAll();
-})
+router.get('/dashboard', async (req, res) => {
+    try {
+        const userData = await User.findByPk(req.session.user_id, {
+            attributes: { exclude: ['password']},
+            include: [{ model: Blog, attributes: ['title', 'contents', 'date' ]}]
+        });
+
+        if(!userData) {
+            res.status(404).json({ message: 'User not found!'})
+        }
+
+        const users = userData.get({ plain: true });
+
+        res.render('dashboard', {
+            users,
+            logged_in: req.session.logged_in
+        });
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
 
 router.get('/blog/:id', withAuth, async (req, res) => {
     try {
