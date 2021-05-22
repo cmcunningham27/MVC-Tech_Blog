@@ -8,14 +8,10 @@ router.get('/', async (req, res) => {
             include: [{ model: User, attributes: ['name']}, { model: Comment, include: [User] }]
         });
 
-        // const userData = await User.findAll({
-        //     include: [{ model: Blog, attributes: ['id', 'title', 'contents', 'date']}, { model: Comment, include: [User] }]
-        // });
-
         if (!blogData) {
             res.status(404).json({ message: 'There are no blogs' });
         }
-        console.log(req.session.logged_in);
+
         const blogs = blogData.map((blog) => blog.get({ plain: true }));
         res.render('homepage', {
             blogs,
@@ -53,17 +49,17 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
 router.get('/blog/:id', withAuth, async (req, res) => {
     try {
-        console.log('user id', req.session.id);
+
         const blogData = await Blog.findByPk(req.params.id, {
             include: [{ model: User, attribute: ['name']}, { model: Comment, include: [User] }]
         });
-// , where: { user_id: req.session.user_id }
+
         if (!blogData) {
             res.status(400).json({ message: 'Blog not found!'});
         }
 
         const blog = blogData.get({ plain: true });
-        console.log('blog I chose', blog);
+
         res.render('blog', {
             blog,
             logged_in: req.session.logged_in
