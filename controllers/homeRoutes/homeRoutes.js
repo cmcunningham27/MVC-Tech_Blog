@@ -18,7 +18,6 @@ router.get('/', async (req, res) => {
             logged_in: req.session.logged_in
         });
     }catch (err) {
-        console.log(err);
         res.status(500).json(err);
     }
 });
@@ -42,7 +41,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
         });
 
     } catch (err) {
-        console.log(err);
         res.status(500).json(err);
     }
 });
@@ -65,7 +63,6 @@ router.get('/blog/:id', withAuth, async (req, res) => {
             logged_in: req.session.logged_in
         });
     } catch(err) {
-        console.log(err);
         res.status(500).json(err);
     }
 });
