@@ -11,7 +11,6 @@
         </div>
     </div>
     
-    {{!-- {{#unless blog.comments}} --}}
     <div id="commentBox" class="commentBox flex-column p-3">
         <div class="m-1 border border-dark border-4">
             <div class="bg-success d-flex flex-row p-2">
@@ -30,24 +29,19 @@
             </div>
         </div>
     </div>
-    {{!-- {{/unless}} --}}
-    {{log user.name 'user.name'}}
-    {{!-- {{#if blog.comments}}
-    {{#each blog.comments as |comment|}} --}}
+    
     <div class="postedComment flex-column p-3">
         <div class="m-1 border border-dark border-4 bg-">
             <div class="topBar bg-success d-flex flex-row p-2 h-">
             </div>
             <p class="commentContent p-3">
-                {{comment.content}}
+                {{!-- {{comment.content}} --}}
             </p>
             <p class="p-3">
                 -- {{comment.user.name}}, {{ format_date comment.date}}
             </p>
         </div>
-    </div>
-    {{!-- {{/each}}
-    {{/if}} --}}
+    </div> 
     
 </div>
 

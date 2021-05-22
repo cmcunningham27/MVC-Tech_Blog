@@ -75,29 +75,6 @@ router.get('/blog/:id', withAuth, async (req, res) => {
     }
 });
 
-// router.get('comment/:id', withAuth, async (req, res) => {
-//     try {
-//         console.log('comment user id', req.session.id);
-//         const blogData = await Blog.findByPk(req.params.id, {
-//             include: [{ model: Comment, include: [User], where: { id: req.session.user_id}}]
-//         });
-
-//         if (!blogData) {
-//             res.status(400).json({ message: 'Blog not found!'});
-//         }
-
-//         const blog = blogData.get({ plain: true });
-//         console.log('blog comment I chose', blog);
-//         res.render('comment', {
-//             blog,
-//             logged_in: req.session.logged_in
-//         });
-//     } catch(err) {
-//         console.log(err);
-//         res.status(500).json(err);
-//     }
-// });
-
 router.get('/login', async (req, res) => {
     try {
         res.render('login');
