@@ -1,9 +1,4 @@
-// document.querySelector('.oneBlog').style.display = 'flex';
-// document.querySelector('.commentBox').style.display = 'flex';
-// document.querySelector('.postedComment').style.display = 'flex';
-
 const createComment = async (blog_id, content) => {
-    console.log('blog id', blog_id);
     const response = await fetch('/api/comment', {
         method: 'POST',
         body: JSON.stringify({ blog_id, content }),
