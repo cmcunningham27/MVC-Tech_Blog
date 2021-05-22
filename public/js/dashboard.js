@@ -1,8 +1,10 @@
+// hides and shows elements upon visiting the page
 document.querySelector('.pastBlogs').style.display = 'flex';
 document.querySelector('.postBox').style.display = 'none';
 document.querySelector('.existingBlogBox').style.display = 'none';
 document.querySelector('.btnDiv').style.display = 'flex';
 
+//hies/shows elements on the page, sets attributes and inner HTML, calls update function when UPDATE button is clicked
 const editBlogFn = (title, contents, id) => {
     document.querySelector('.pastBlogs').style.display = 'none';
 
@@ -31,11 +33,13 @@ const editBlogFn = (title, contents, id) => {
     })
 };
 
+//hides and shows elements
 const toggleFn = () => {
     document.querySelector('.pastBlogs').style.display = 'none';
     document.querySelector('.postBox').style.display = 'flex';
 };
 
+//fetch request to add new blog to database
 const newBlogFn = async (title, contents) => {
     const response = await fetch('/api/blog', {
         method: 'POST',
@@ -50,6 +54,7 @@ const newBlogFn = async (title, contents) => {
     }
 };
 
+//updates a blog already in the database
 const updateFn = async (title, contents, id) => {
     const response = await fetch(`/api/blog/${ id }`, {
         method: 'PUT',
@@ -64,6 +69,7 @@ const updateFn = async (title, contents, id) => {
     }
 }
 
+//removes a specific blog from database
 const deleteFn = async (id) => {
     const response = await fetch(`/api/blog/${ id }`, {
         method: 'DELETE',
@@ -77,6 +83,7 @@ const deleteFn = async (id) => {
     }
 }
 
+//calls editBlog function when blog title is clicked
 if(document.querySelector('.pastBlogTitle')){ 
    document.querySelector('.pastBlogTitle').addEventListener('click', (event) => {
         const target = event.target;
@@ -87,9 +94,10 @@ if(document.querySelector('.pastBlogTitle')){
     }); 
 };
 
-
+//calls toggle function when New Post button is clicked
 document.querySelector('.btnDiv').addEventListener('click', toggleFn);
 
+//calls newBlog function when CREATE button is clicked
 if(document.querySelector('.createBtn')) {
     document.querySelector('.createBtn').addEventListener('click', () => {
         const title = document.querySelector('.blogTitle').value;
