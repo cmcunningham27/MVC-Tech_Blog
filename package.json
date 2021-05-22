@@ -28,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/cmcunningham27/MVC-Tech_Blog/issues"
   },
-  "homepage": "https://github.com/cmcunningham27/MVC-Tech_Blog#readme"
+  "homepage": "https://github.com/cmcunningham27/MVC-Tech_Blog#readme",
+  "engines": {
+    "node": "14.16.0"
+  }
 }
