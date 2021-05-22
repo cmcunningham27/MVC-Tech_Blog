@@ -56,9 +56,9 @@ router.get('/blog/:id', withAuth, async (req, res) => {
     try {
         console.log('user id', req.session.id);
         const blogData = await Blog.findByPk(req.params.id, {
-            include: [{ model: User, attribute: ['name']}, { model: Comment, include: [User]}, ]
+            include: [{ model: User, attribute: ['name']}, { model: Comment, include: [User] }]
         });
-// where: { user_id: req.session.user_id }
+// , where: { user_id: req.session.user_id }
         if (!blogData) {
             res.status(400).json({ message: 'Blog not found!'});
         }
