@@ -1,7 +1,9 @@
+/* gives height to the top green section of the commentBox */
 .topBar {
     height: 53px;
 }
 
+/* styles the New Post button */
 .btnDiv {
     position: fixed;
     bottom: 35px;
