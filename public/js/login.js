@@ -1,16 +1,20 @@
+//hides/shows elements 
 document.querySelector('.loginBox').style.display = 'flex';
 document.querySelector('.signupBox').style.display = 'none';
 
+//hides/shows elements
 const loginFn = () => {
     document.querySelector('.loginBox').style.display = 'flex';
     document.querySelector('.signupBox').style.display = 'none';
 };
 
+//hides/shows elements
 const signupFn = () => {
     document.querySelector('.loginBox').style.display = 'none';
     document.querySelector('.signupBox').style.display = 'flex';
 };
 
+//fetch request to login the user
 const loginUserFn = async (event) => {
     event.preventDefault();
 
@@ -31,6 +35,7 @@ const loginUserFn = async (event) => {
     }
 };
 
+//fetch request to create new user in database and log user in
 const newUserFn = async (event) => {
     event.preventDefault();
 
@@ -52,6 +57,7 @@ const newUserFn = async (event) => {
     }
 };
 
+//calls function upon LogIn or Sign Up buttons being clicked
 document.querySelector('.logInBtn').addEventListener('click', loginFn);
 document.querySelector('.signUpBtn').addEventListener('click', signupFn);
 document.querySelector('.loginBtn').addEventListener('click', loginUserFn);
