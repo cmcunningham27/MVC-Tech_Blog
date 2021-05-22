@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Blog } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+//creates new blog in database
 router.post('/', withAuth, async (req, res) => {
     try {
         const blogData = await Blog.create({
@@ -15,6 +16,7 @@ router.post('/', withAuth, async (req, res) => {
     }
 });
 
+//updates specific blog in database by its id with any changes the user made
 router.put('/:id', withAuth, async (req, res) => {
     try {
         const blogData = await Blog.update(req.body, {
@@ -33,6 +35,7 @@ router.put('/:id', withAuth, async (req, res) => {
     }
 });
 
+//deletes specific blog in database by its id
 router.delete('/:id', withAuth, async (req, res) => {
     try {
         const blogData = await Blog.destroy({
