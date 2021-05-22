@@ -9,10 +9,6 @@ const sequelize = new Sequelize(
         host: 'localhost',
         dialect: 'mysql',
         port: 3306,
-        pool: {
-            // idle: 10000,
-            // evict: 1000
-        }
     }
 );
 
