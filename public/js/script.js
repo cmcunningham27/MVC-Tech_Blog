@@ -1,3 +1,4 @@
+//fetch request to log out user
 const logoutFn = async () => {
     const response = await fetch('/api/user/logout', {
         method: 'POST',
@@ -11,6 +12,8 @@ const logoutFn = async () => {
     }
 
 };
+
+//fetch request to get single blog post bring to blog page
 const singleBlogFn = async (id) => {
     const response = await fetch(`/blog/${ id }`, {
         method: 'GET',
@@ -23,10 +26,13 @@ const singleBlogFn = async (id) => {
     }
 };
 
+//calls logout function when logout in nav bar is clicked
 document.querySelector('#logout').addEventListener('click', logoutFn);
 
+//declares blogs as an element
 const blogs = document.getElementsByClassName('eachBlogTitle');
 
+//adds an event listener to all blog post titles and calls the singleBlog function when any of the titles are clicked
 for (let i = 0; i < blogs.length; i++) {
     blogs[i].addEventListener('click', (event) => {
         const target = event.target;
