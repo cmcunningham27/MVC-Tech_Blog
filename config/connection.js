@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 require('dotenv').config();
 
+//sequelize connection with dotenv private information, MySQL database, and which port to use 
 const sequelize = new Sequelize(
     process.env.DB_NAME,
     process.env.DB_USER,
