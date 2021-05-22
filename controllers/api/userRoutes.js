@@ -3,9 +3,7 @@ const { User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.post('/login', async (req, res) => {
-    console.log('before try');
     try {
-        console.log('after try');
         const userData = await User.findOne({
             where: {
                 name: req.body.name
@@ -20,7 +18,6 @@ router.post('/login', async (req, res) => {
 
         if(!validPassword){
             res.status(400).json({ message: 'login failed: username or password incorrect.'});
-
         }
 
         req.session.save(() => {
@@ -30,13 +27,11 @@ router.post('/login', async (req, res) => {
         });
 
     } catch (err) {
-        console.log('catch', err);
         res.status(400).json(err);
     }
 });
 
 router.post('/signup', async (req, res) => {
-    console.log('signing', req.body);
     try {
         const userData = await User.create(req.body);
         req.session.save(() => {
@@ -45,13 +40,11 @@ router.post('/signup', async (req, res) => {
             res.redirect('/');
         });
     } catch (err) {
-        console.log(err);
         res.status(400).json(err);
     }
 });
 
 router.post('/logout', withAuth, (req, res) => {
-    console.log('Logging out');
     if(req.session.logged_in){
         req.session.destroy(() => {
             res.status(204).end();
