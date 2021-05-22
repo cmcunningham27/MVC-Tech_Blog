@@ -51,7 +51,6 @@ const newBlogFn = async (title, contents) => {
 };
 
 const updateFn = async (title, contents, id) => {
-    console.log();
     const response = await fetch(`/api/blog/${ id }`, {
         method: 'PUT',
         body: JSON.stringify({ title, contents }),
@@ -66,7 +65,6 @@ const updateFn = async (title, contents, id) => {
 }
 
 const deleteFn = async (id) => {
-    console.log('delete id', id)
     const response = await fetch(`/api/blog/${ id }`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' }
