@@ -2,7 +2,7 @@ const sequelize = require('../config/connection');
 
 const userData = require('./userData');
 const blogData = require('./blogData');
-const commentData = require('./commentData');
+// const commentData = require('./commentData');
 const { User, Blog, Comment } = require('../models');
 
 const seedDatabase = async () => {
@@ -14,8 +14,8 @@ const seedDatabase = async () => {
     await Blog.bulkCreate(blogData);
     console.log('\n----- BLOGS SEEDED -----\n');
 
-    await Comment.bulkCreate(commentData);
-    console.log('\n----- COMMENTS SEEDED -----\n');
+    // await Comment.bulkCreate(commentData);
+    // console.log('\n----- COMMENTS SEEDED -----\n');
 
     process.exit(0);
 };
