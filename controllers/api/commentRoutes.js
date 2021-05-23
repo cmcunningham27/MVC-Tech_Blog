@@ -20,4 +20,20 @@ router.post('/', withAuth, async (req, res) => {
     }
 });
 
+// router.get('/:id', withAuth, async (req, res) => {
+//     try {
+//         const commentData = await Comment.findAll({
+//             where: {
+//                 blog_id: req.params.id
+//             }
+//         });
+//         const comment = commentData.get({ plain: true });
+        
+//         res.status(200).json(comment);
+//     } catch (err) {
+//         console.log(err);
+//         res.status(500).json(err);
+//     }
+// })
+
 module.exports = router;

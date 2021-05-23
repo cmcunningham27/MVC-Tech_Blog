@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Blog } = require('../../models');
+const { Blog, Comment, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 //creates new blog in database
@@ -13,6 +13,22 @@ router.post('/', withAuth, async (req, res) => {
         res.status(200).json(blogData);
     } catch (err) {
         res.status(400).json(err);
+    }
+});
+
+router.get('/:id', withAuth, async (req, res) => {
+    console.log('Inside get request', req.params.id);
+    try {
+        const blogData = await Blog.findByPk(req.params.id, {
+            include: [{ model: User, attribute: ['name'] }, { model: Comment, attribute: ['content', 'date'], include: [User] }] 
+        });
+        console.log('blog data', blogData);
+        const blog = blogData.get({ plain: true });
+        console.log('blog', blog);
+        res.status(200).json(blog);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
     }
 });
 
