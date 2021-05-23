@@ -58,7 +58,7 @@ Project is created with:
 
 ## Challenges
 * I tried to have the single Blog and Comment functionality on the hompage, but realized it would make more sense to create the single Blog's own page on /blog. This made the process a bit easier to work with.
-* Having the comment render after the user created a comment for a specific blog proved to be difficult. The route was being called and working properly. However, the res.render was not working. I did get some help to remedy this challenge. I was notified about the use of {{#if @last}}.
+* Having the comment render after the user created a comment for a specific blog proved to be difficult. The route was being called and working properly. However, the res.render was not working. I did get some help to remedy this challenge. I was notified about the use of {{#if @last}}. I learned that there was a better way to get the newest comment to render on the page and not remain when the user clicks on that specific blog again. I am glad I was able to get it to work because I did not like that the user could not leave another comment on the same blog later if they wanted to.
 * I am learning how important including module.exports = router; at the bottom of the api routes. I have forgotten it a couple times and finally learned my lesson!
 * I ran into a complication when it came to the right location for the eventlisteners that called the update and delete functions. If I had them in their own if statement at the bottom of the dashboard script file then the id was coming up undefined. I had to put them at the bottom of the toggle function in order for the id to include a value.
 
